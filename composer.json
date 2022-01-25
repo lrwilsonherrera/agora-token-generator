@@ -1,0 +1,36 @@
+{
+  "name": "lrwilsonherrera/agora-key-generator",
+  "description": "Generador de tokens para AgoraSDK en laravel",
+  "type": "library",
+  "license": "MIT",
+  "authors": [
+    {
+      "name": "Luis Ricardo Wilson Herrera",
+      "email": "lrwilsonherrera@gmail.com"
+    }
+  ],
+  "autoload": {
+    "psr-4": {
+      "EurekuDev\\AgoraKeyGenerator\\": "src"
+    }
+  },
+  "autoload-dev": {
+    "psr-4": {
+      "EurekuDev\\AgoraKeyGenerator\\Tests\\": "tests"
+    }
+  },
+  "require-dev": {
+    "orchestra/testbench": "^6.0",
+    "phpunit/phpunit": "^9.5"
+  },
+  "extra": {
+      "laravel": {
+          "providers": [
+              "EurekuDev\\AgoraKeyGenerator\\AgoraKeyGeneratorServiceProvider"
+          ],
+		  "aliases": {
+            "RtmToken": "EurekuDev\\AgoraKeyGenerator\\Facades\\RtmToken"
+        }
+      }
+  }
+}
