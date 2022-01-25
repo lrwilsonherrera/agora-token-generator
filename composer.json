@@ -3,6 +3,7 @@
   "description": "Generador de tokens para AgoraSDK en laravel",
   "type": "library",
   "license": "MIT",
+  "minimum-stability": "stable",
   "authors": [
     {
       "name": "Luis Ricardo Wilson Herrera",

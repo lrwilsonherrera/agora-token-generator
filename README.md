@@ -4,6 +4,17 @@ _Paquetes laravel para la generación de tokens de autorización en el sdk de Ag
 
 ### Instalación y configuración 🛠️
 
+_Edite su archivo "composer.json" y agrege el repositorio_
+
+```json
+	"repositories": [
+        {
+            "type": "vcs",
+            "url": "https://github.com/lrwilsonherrera/agora-token-generator"
+        }
+    ],
+```
+
 _Instalación del paquete via composer_
 
 ```bash
@@ -47,7 +58,6 @@ _Incluya el facade_
 			$token = RtmToken::build($userId)->textToken;
 
 			....
-			
 		}   
 
 ```
