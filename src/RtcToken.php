@@ -40,7 +40,7 @@ class RtcToken
 			$this->appCertificate,
 			$channelName,
 			$uid,
-			$this->role,
+			$role,
 			$privilegeExpiredTs
 		);
 
