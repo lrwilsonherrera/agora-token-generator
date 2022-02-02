@@ -42,23 +42,52 @@ _Incluya el facade_
 ```php
 <?php
 
-    namespace App\Http\Controllers;
+namespace App\Http\Controllers\Api;
 
-	use EurekuDev\AgoraKeyGenerator\Facades\RtmToken;
+use App\Http\Controllers\Controller;
+use EurekuDev\AgoraKeyGenerator\Facades\RtmToken;
+use EurekuDev\AgoraKeyGenerator\Facades\RtcToken;
+use EurekuDev\AgoraKeyGenerator\RtcToken as EurekuDevRtcToken;
+use EurekuDev\AgoraKeyGenerator\RtmToken as EurekuDevRtmToken;
+use Illuminate\Http\Request;
 
-    class AppController extends Controller
+class AgoraController extends Controller
+{
+
+    public function generateRtmToken(Request $request)
     {
+        $userAccount = 'test_user_id';
 
-        public function index(Request $request)
-		{
-			$user = $request->user();
+        $token = RtmToken::build($userAccount, EurekuDevRtmToken::RoleRtmUser);
 
-			$userId = $user->id;
+        return response()->json(['agora_rtm_token' => $token->textToken]);
 
-			$token = RtmToken::build($userId)->textToken;
+    }
 
-			....
-		}   
+    public function generateRtmTokenWithUid(Request $request)
+    {
+        $channelName = 'channel_name',
+	$uid = 0;
+        $role = EurekuDevRtcToken::RolePublisher;
 
+        $token = RtcToken::buildWithUid($channelName, $uid, $role);
+
+        return response()->json(['agora_rtc_token' => $token->textToken]);
+
+    }
+
+    public function generateRtmTokenWithUserAccount(Request $request)
+    {
+        $channelName = 'channel_name',
+	$userAccount = 'test_user_id';
+        $role = EurekuDevRtcToken::RoleSubscriber;
+
+        $token = RtcToken::buildWithUserAccount($channelName, $userAccount, $role);
+
+        return response()->json(['agora_rtc_token' => $token->textToken]);
+
+    }
+
+}
 ```
 
