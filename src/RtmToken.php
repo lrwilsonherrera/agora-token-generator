@@ -8,6 +8,7 @@ include_once "lib/RtmTokenBuilder.php";
 
 class RtmToken
 {
+	public const RoleRtmUser = 1;
 
 	public $textToken;
 
@@ -15,20 +16,17 @@ class RtmToken
 
 	private $appCertificate;
 
-	private $role;
-
 	private $expireTimeInSeconds;
 
 	public function __construct()
 	{
 		$this->appID = config('agorakeygenerator.agora_app_id');
 		$this->appCertificate = config('agorakeygenerator.agora_app_certificate');
-		$this->role = RtmTokenBuilder::RoleRtmUser;
 		$this->expireTimeInSeconds = config('agorakeygenerator.agora_token_expire_time');
 
 	}
 
-	public function build($user)
+	public function build($user, $role=RtmToken::RoleRtmUser)
 	{
 		$currentTimestamp = (new \DateTime("now", new \DateTimeZone('UTC')))->getTimestamp();
 		$privilegeExpiredTs = $currentTimestamp + $this->expireTimeInSeconds;
@@ -37,7 +35,7 @@ class RtmToken
 			$this->appID,
 			$this->appCertificate,
 			$user,
-			$this->role,
+			$role,
 			$privilegeExpiredTs
 		);
 

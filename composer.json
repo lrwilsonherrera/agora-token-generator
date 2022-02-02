@@ -29,9 +29,10 @@
           "providers": [
               "EurekuDev\\AgoraKeyGenerator\\AgoraKeyGeneratorServiceProvider"
           ],
-		  "aliases": {
-            "RtmToken": "EurekuDev\\AgoraKeyGenerator\\Facades\\RtmToken"
-        }
+	  "aliases": {
+            "RtmToken": "EurekuDev\\AgoraKeyGenerator\\Facades\\RtmToken",
+            "RtcToken": "EurekuDev\\AgoraKeyGenerator\\Facades\\RtcToken"
+          }
       }
   }
 }

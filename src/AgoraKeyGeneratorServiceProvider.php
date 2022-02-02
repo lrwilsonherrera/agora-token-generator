@@ -3,6 +3,7 @@
 namespace EurekuDev\AgoraKeyGenerator;
 
 use EurekuDev\AgoraKeyGenerator\RtmToken;
+use EurekuDev\AgoraKeyGenerator\RtcToken;
 use Illuminate\Support\ServiceProvider;
 
 class AgoraKeyGeneratorServiceProvider extends ServiceProvider
@@ -14,6 +15,11 @@ class AgoraKeyGeneratorServiceProvider extends ServiceProvider
 		$this->app->bind('rtmtoken', function($app) {
 			return new RtmToken();
 		});
+
+		$this->app->bind('rtctoken', function($app) {
+			return new RtcToken();
+		});
+
 	}
 
 	public function boot()
